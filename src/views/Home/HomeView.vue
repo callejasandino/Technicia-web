@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import StarRating from './StarRatingComponent/StarRatingComponent.vue';
-import Analytics from './AnalyticsComponent/AnalyticsComponent.vue';
+    import StarRating from './StarRatingComponent/StarRatingComponent.vue';
+    import Analytics from './AnalyticsComponent/AnalyticsComponent.vue';
+    import ForChecking from './AnalyticsComponent/Modals/ForChecking.vue';
 </script>
 
 <template>
@@ -55,7 +56,7 @@ import Analytics from './AnalyticsComponent/AnalyticsComponent.vue';
 
             <div class="analytics-main">
                 <div class="mb-5">
-                    <h1 class="mb-5 text-center text-5xl font-semibold leading-none tracking-tight text-gray-900 dark:text-white">Analytics</h1>
+                    <h1 class="analytics-header">Analytics</h1>
                 </div>
 
                 <hr class="mb-4 border-gray-700" />
@@ -64,7 +65,7 @@ import Analytics from './AnalyticsComponent/AnalyticsComponent.vue';
                     <div class="analytics-card">
                         <div class="card-body">
                             <div class="card-actions justify-end">
-                                <div class="badge badge-success p-2 w-24">Done</div>
+                                <div class="badge badge-success p-2 w-96">For Release</div>
                             </div>
                             <p>We are using cookies for no reason.</p>
                         </div>
@@ -72,7 +73,7 @@ import Analytics from './AnalyticsComponent/AnalyticsComponent.vue';
                     <div class="analytics-card">
                         <div class="card-body">
                             <div class="card-actions justify-end">
-                                <div class="badge badge-warning p-2 w-24">In Progress</div>
+                                <div class="badge badge-warning p-2 w-96">For Repair</div>
                             </div>
                             <p>We are using cookies for no reason.</p>
                         </div>
@@ -80,7 +81,7 @@ import Analytics from './AnalyticsComponent/AnalyticsComponent.vue';
                     <div class="analytics-card">
                         <div class="card-body">
                             <div class="card-actions justify-end">
-                                <div class="badge badge-error p-2 w-24">Job Order</div>
+                                <div class="badge badge-error p-2 w-96">Waiting For Parts</div>
                             </div>
                             <p>We are using cookies for no reason.</p>
                         </div>
@@ -88,14 +89,13 @@ import Analytics from './AnalyticsComponent/AnalyticsComponent.vue';
                     <div class="analytics-card">
                         <div class="card-body">
                             <div class="card-actions justify-end">
-                                <div class="badge badge-ghost p-2 w-24">Inquiries</div>
+                                <div class="badge badge-ghost p-2 w-96">For Checking</div>
                             </div>
                             <p>We are using cookies for no reason.</p>
+                            <ForChecking> </ForChecking>
                         </div>
                     </div>
                 </div>
-
-                <hr class="mb-4 border-gray-700" />
 
                 <div class="flex justify-center">
                     <StarRating :ratingCount="4.24" :profileViews="'10Th'"> </StarRating>
