@@ -1,51 +1,57 @@
 <template>
-    <div class="analytics-container p-4">
-        <Line :data="data" :options="options" />
-    </div>
+    <Doughnut :data="data" :options="options" />
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js';
-import { Line } from 'vue-chartjs';
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { Doughnut } from 'vue-chartjs';
+import { computed } from 'vue';
 
-ChartJS.register(Title, Tooltip, Legend, PointElement, LineElement, CategoryScale, LinearScale);
+ChartJS.register(ArcElement, Tooltip, Legend);
 
-ChartJS.defaults.color = '#959ca9';
+let prop = defineProps<{
+    forRepair?: number;
+    forChecking?: number;
+    forRelease?: number;
+    waitingForParts?: number;
+}>();
 
-const data = ref({
-    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+const forRepair = computed(() => {
+    return prop.forRepair;
+});
+
+const forChecking = computed(() => {
+    return prop.forChecking;
+});
+
+const forRelease = computed(() => {
+    return prop.forRelease;
+});
+
+const waitingForParts = computed(() => {
+    return prop.waitingForParts;
+});
+
+const data = {
+    labels: ['For Repair', 'For Checking', 'For Release', 'Waiting for Parts'],
     datasets: [
         {
-            borderWidth: 1,
-            borderColor: '#ffffff',
-            label: 'Sales',
-            data: [100, 20, 12],
-            backgroundColor: '#7480ff',
-            pointRadius: 5
+            backgroundColor: ['#3f96e3', '#50d1fb', '#83bc55', '#f8a847'],
+            data: [forRepair, forChecking, forRelease, waitingForParts]
         }
     ]
-});
-const options = ref({
+};
+
+const options = {
     responsive: true,
     maintainAspectRatio: false,
-    scales: {
-        x: {
-            ticks: {
-                font: {
-                    size: 14
-                }
-            }
-        },
-        y: {
-            ticks: {
-                font: {
-                    size: 14
-                }
-            }
+    elements: {
+        arc: {
+            borderWidth: 3,
+            borderColor: '#15191e'
         }
     }
-});
+};
 </script>
 
 <style scoped src="./AnalyticsComponent.scss"></style>
