@@ -1,57 +1,51 @@
 <template>
-    <Doughnut :data="data" :options="options" />
+    <div class="analytics-container p-4">
+        <Line :data="data" :options="options" />
+    </div>
 </template>
 
 <script setup lang="ts">
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
-import { Doughnut } from 'vue-chartjs';
-import { computed } from 'vue';
+import { ref } from 'vue';
+import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js';
+import { Line } from 'vue-chartjs';
 
-ChartJS.register(ArcElement, Tooltip, Legend);
+ChartJS.register(Title, Tooltip, Legend, PointElement, LineElement, CategoryScale, LinearScale);
 
-let prop = defineProps<{
-    forRepair?: number;
-    forChecking?: number;
-    forRelease?: number;
-    waitingForParts?: number;
-}>();
+ChartJS.defaults.color = '#959ca9';
 
-const forRepair = computed(() => {
-    return prop.forRepair;
-});
-
-const forChecking = computed(() => {
-    return prop.forChecking;
-});
-
-const forRelease = computed(() => {
-    return prop.forRelease;
-});
-
-const waitingForParts = computed(() => {
-    return prop.waitingForParts;
-});
-
-const data = {
-    labels: ['For Repair', 'For Checking', 'For Release', 'Waiting for Parts'],
+const data = ref({
+    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
     datasets: [
         {
-            backgroundColor: ['#3f96e3', '#50d1fb', '#83bc55', '#f8a847'],
-            data: [forRepair, forChecking, forRelease, waitingForParts]
+            borderWidth: 1,
+            borderColor: '#ffffff',
+            label: 'Sales',
+            data: [100, 20, 12],
+            backgroundColor: '#7480ff',
+            pointRadius: 5
         }
     ]
-};
-
-const options = {
+});
+const options = ref({
     responsive: true,
     maintainAspectRatio: false,
-    elements: {
-        arc: {
-            borderWidth: 3,
-            borderColor: '#15191e'
+    scales: {
+        x: {
+            ticks: {
+                font: {
+                    size: 14
+                }
+            }
+        },
+        y: {
+            ticks: {
+                font: {
+                    size: 14
+                }
+            }
         }
     }
-};
+});
 </script>
 
 <style scoped src="./AnalyticsComponent.scss"></style>
