@@ -48,4 +48,4 @@ const options = ref({
 });
 </script>
 
-<style scoped src="./AnalyticsComponent.scss"></style>
+<style scoped src="./SalesComponent.scss"></style>
