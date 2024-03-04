@@ -23,7 +23,7 @@ const router = createRouter({
                 {
                     path: '/reviews',
                     name: 'reviews',
-                    component: () => import('@/views/Dashboard/DashboardComponent.vue')
+                    component: () => import('@/views/Reviews/ReviewsComponent.vue')
                 },
                 {
                     path: '/posts',
@@ -33,7 +33,7 @@ const router = createRouter({
                 {
                     path: '/calendar',
                     name: 'calendar',
-                    component: () => import('@/views/Dashboard/DashboardComponent.vue')
+                    component: () => import('@/views/Calendar/CalendarComponent.vue')
                 },
                 {
                     path: '/inventory',

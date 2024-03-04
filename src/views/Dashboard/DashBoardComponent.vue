@@ -64,8 +64,8 @@
 </template>
 
 <script setup lang="ts">
-import StarRating from './StarRatingComponent/StarRatingComponent.vue';
-import Analytics from './AnalyticsComponent/AnalyticsComponent.vue';
+    import StarRating from './StarRatingComponent/StarRatingComponent.vue';
+    import Analytics from './AnalyticsComponent/AnalyticsComponent.vue';
 </script>
 
 <style lang="scss" src="./DashboardComponent.scss"></style>
